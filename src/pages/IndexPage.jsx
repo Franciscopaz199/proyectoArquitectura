@@ -6,7 +6,7 @@ import ConversionForm from "../components/Forms/ConversionForm";
 const IndexPage = () => (
      <Layout>
           <ContainerApp>
-               <TItleIndex title="The Pa's Calculator" subtitle="Use the calculator to calculate the Pa's of your employees" />
+               <TItleIndex title="Calculadora de Sistemas Numéricos" subtitle="¿Necesitas cambiar de sistema numérico? Nuestra calculadora lo hace de manera simple y elegante. Lo tienes todo en un solo lugar." />
                <ConversionForm/>          
           </ContainerApp>
      </Layout>

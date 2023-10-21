@@ -5,8 +5,9 @@ import TItleIndex from "../../components/LayoutComponents/TItleIndex";
 
 function Layout(props) {
      return (
-          <div className="w-full min-h-screen flex flex-col">
-               <Header title="My App" />
+          <div className=" h-screen " >
+               
+               <Header title="Numericonversor" />
                {props.children}
                <FooterWithLogo />
           </div>

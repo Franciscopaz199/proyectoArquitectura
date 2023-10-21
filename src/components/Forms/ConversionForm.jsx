@@ -58,11 +58,11 @@ export default function ConversionForm(props) {
 
      return (
           <>
-               <div className="flex flex-col overflow-hidden sm:p-10 p-4 border p-4 rounded-lg rounded-lg mt-10">
+               <div className="flex flex-col overflow-hidden sm:px-10 sm:py-6 border  rounded-lg rounded-lg mt-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-4 py-5 bg-white sm:p-6">
                     <div className="flex   flex-col sm:flex-row  space-y-4 sm:space-y-0 ">
                          <div className="w-full sm:w-1/2 flex flex-col">
                               <label htmlFor="sistemaOrigen">Sistema origen</label>
-                              <select name="" id="sistemaOrigen" className="w-full">
+                              <select name="" id="sistemaOrigen" className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-40">
                                    <option value="default" selected>Sistema origen</option>
                                    {SYSTEMS.map((system) => (
                                         <option value={system.base}>{system.name}</option>
@@ -71,7 +71,7 @@ export default function ConversionForm(props) {
                          </div>
                          <div className="w-full sm:w-1/2 flex flex-col">
                               <label htmlFor="sistemaDestino">Sistema destino</label>
-                              <select name="" id="sistemaDestino" className="w-full" required>
+                              <select name="" id="sistemaDestino" className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-40" required>
                                    <option value="default" selected>Sistema destino</option>
                                    {SYSTEMS.map((system) => (
                                         <option value={system.base}>{system.name}</option>
@@ -81,13 +81,15 @@ export default function ConversionForm(props) {
                     </div>
                     <div className="flex flex-col mt-4">
                          <label htmlFor="">Valor a convertir</label>
-                         <input type="text" placeholder="Enter the number of Pa's or Employees" className="p-2 border-2 border-gray-300 w-full " name="value" id="value" 
+                         <input type="text" placeholder="Ingresa el valor a convertir" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm bg-gray-50 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" name="value" id="value" 
                          onChange={(e) => validar(e)} required />
 
                     </div>
-                    <Button className="mt-4" onClick={() => calculate()} >
-                         Calculate
+                   <div className="flex ">
+                   <Button  onClick={() => calculate()} className="w-1/3mx-auto mt-4">
+                         Calcular
                     </Button>
+                   </div>
                </div>
 
                {
