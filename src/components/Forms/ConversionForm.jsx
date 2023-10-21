@@ -3,6 +3,7 @@ import { Button } from "flowbite-react";
 import { useState } from "react";
 import { useEffect } from "react";
 
+import Conversiones from "../../utils/lib/conversiones/conversiones";
 import MostrarResultado from "../Resultados/MostrarResultado";
 import SYSTEMS from "../../utils/vars/constants";
 // import Conversiones from "../../utils/lib/conversiones/conversiones";
@@ -20,11 +21,26 @@ export default function ConversionForm(props) {
 
 
      const calculate = () => {
-          const value = document.getElementById("value").value;
           const sistemaOrigen = document.getElementById("sistemaOrigen").value;
           const sistemaDestino = document.getElementById("sistemaDestino").value;
-          setResult(parseFloat(value, sistemaOrigen).toString(sistemaDestino));
+
+          if (sistemaOrigen == "default" || sistemaDestino == "default") {
+               alert("Debe seleccionar un sistema origen y un sistema destino");
+               return;
+          }
+
+          if (value == 0) {
+               alert("Debe ingresar un valor");
+               return;
+          }
+
+          const conversion = new Conversiones(value, sistemaOrigen, sistemaDestino);
+          const resultado = conversion.convertirSistema();
+          setResult(resultado);
      }
+
+
+    
 
      const validar = (e) => {
           const dominio = SYSTEMS.find(system => system.base == document.getElementById("sistemaOrigen").value).domain.toString();
@@ -52,7 +68,6 @@ export default function ConversionForm(props) {
                                         <option value={system.base}>{system.name}</option>
                                    ))}
                               </select>
-
                          </div>
                          <div className="w-full sm:w-1/2 flex flex-col">
                               <label htmlFor="sistemaDestino">Sistema destino</label>
