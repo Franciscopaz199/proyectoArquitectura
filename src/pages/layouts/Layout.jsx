@@ -7,7 +7,7 @@ function Layout(props) {
      return (
           <div className=" h-screen " >
                
-               <Header title="Numericonversor" />
+               <Header title="ArquiMath" />
                {props.children}
                <FooterWithLogo />
           </div>

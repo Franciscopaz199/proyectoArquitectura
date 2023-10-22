@@ -36,11 +36,6 @@ export default function ConversionForm(props) {
                return;
           }
 
-          if (value == 0) {
-               alert("Debe ingresar un valor");
-               return;
-          }
-
           const conversion = new Conversiones(value, sistemaOrigen, sistemaDestino);
           const resultado = conversion.convertirSistema();
           setResult(resultado);
@@ -54,7 +49,9 @@ export default function ConversionForm(props) {
                const valor = e.target.value;
                const regex = new RegExp(`^[${dominio}.]+$`);
                if (regex.test(valor)) {
+                    setResult(null);
                     setValue(valor);
+                    
                } else {
                     e.target.value = valor.slice(0, valor.length - 1);
                }
@@ -88,7 +85,7 @@ export default function ConversionForm(props) {
                     <div className="flex flex-col mt-4">
                          <label htmlFor="">Valor a convertir</label>
                          <input type="text" placeholder="Ingresa el valor a convertir" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm bg-gray-50 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" name="value" id="value"
-                              onChange={(e) => validar(e)} required />
+                             onKeyUp={(e) => validar(e)}/>
 
                     </div>
                     <div className="flex ">
