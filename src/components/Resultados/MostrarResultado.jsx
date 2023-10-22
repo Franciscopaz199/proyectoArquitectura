@@ -10,7 +10,7 @@ export default function MostrarResultado(props) {
       // El segundo argumento es un arreglo de dependencias vacío para que se ejecute solo una vez
      return (
           <>
-               <div class="border p-4 rounded-lg mt-10 " id="resultado">
+               <div class="border p-4 rounded-lg mt-3 " id="resultado">
                     <div class="flex items-start">
                          <div class="flex flex-grow items-start gap-3">
 

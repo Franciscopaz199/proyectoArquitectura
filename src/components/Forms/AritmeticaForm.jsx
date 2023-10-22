@@ -9,6 +9,7 @@ import InputForm from "./FormsComponents/InputForm";
 import SYSTEMS from "../../utils/vars/constants";
 import Conversiones from "../../utils/lib/conversiones/conversiones";
 import Funciones from "../../utils/lib/conversiones/Funciones";
+import MostrarResultado from "../Resultados/MostrarResultado";
 
 export default function AritmeticaForm(props) {
 
@@ -47,7 +48,7 @@ export default function AritmeticaForm(props) {
                               system: system.base
                          });
                     });
-                  
+
                     break;
                case "resta":
 
@@ -88,6 +89,11 @@ export default function AritmeticaForm(props) {
           setResultados(resultados);
      }
 
+     const scrollIntoView = () => {
+          const resultadoDiv = document.getElementById("resultado");
+          resultadoDiv.scrollIntoView({ behavior: "smooth" });
+     }
+
      return (
           <>
                <FormContainer>
@@ -111,11 +117,14 @@ export default function AritmeticaForm(props) {
                     </div>
                </FormContainer>
                {
+                    resultados.length > 0 &&
                     resultados.map((resultado, index) => (
-                         <div key={index}>
-                              <p>Value: {resultado.value}</p>
-                              <p>System: {resultado.system}</p>
-                         </div>
+                         <MostrarResultado title={`En base ${resultado.system}`}
+                              subtitle={`Resultado de la ${document.getElementById("operacion").value}`}
+                              onClick={() => setResultados(null)}
+                              scrollIntoView={scrollIntoView}
+                              latex1={`$${resultado.value}_{{${resultado.system}}}$`}>
+                         </MostrarResultado>
                     ))
                }
           </>

@@ -68,7 +68,6 @@ export default function ConversionForm(props) {
                          <div className="w-full sm:w-1/2 flex flex-col">
                               <label htmlFor="sistemaOrigen">Sistema origen</label>
                               <select name="" id="sistemaOrigen" className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-40">
-                                   <option value="default" selected>Sistema origen</option>
                                    {SYSTEMS.map((system) => (
                                         <option value={system.base}>{system.name}</option>
                                    ))}
@@ -91,23 +90,29 @@ export default function ConversionForm(props) {
 
                     </div>
                     <div className="flex ">
-                         <Button onClick={() => calculate()} className="w-1/3mx-auto mt-4">
+                         <Button onClick={() => calculate()}
+                              className="w-1/3mx-auto mt-4">
                               Calcular
                          </Button>
                     </div>
 
 
-                    {
-                         result != null ?
-                              <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)} scrollIntoView={scrollIntoView} latex1={`$${value}_{{${document.getElementById("sistemaOrigen").value}}} = $`} latex2={`$${result}_{{${sistemaDestino}}}$`}
-                              >
-                                   <p>{result}</p>
-                              </MostrarResultado>
-                              : " "
-
-                    }
-
                </FormContainer>
+               {
+                    result != null ?
+                         <MostrarResultado
+                              title="Resultado"
+                              subtitle="Resultado de la conversión"
+                              onClick={() => setResult(null)}
+                              scrollIntoView={scrollIntoView}
+                              latex1={`$${value}_{{${document.getElementById("sistemaOrigen").value}}} = $`}
+                              latex2={` $${result}_{{${sistemaDestino}}}$`}
+                         >
+
+                         </MostrarResultado>
+                         : " "
+
+               }
           </>
      );
 }
