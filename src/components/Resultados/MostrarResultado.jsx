@@ -18,8 +18,8 @@ export default function MostrarResultado(props) {
                                    <div class="font-medium text-color mb-1">{props.title}</div>
                                    <div class="text-sm text-color mb-4">{props.subtitle}</div>
                                    <h3 className="sm:text-2xl font-bold text-blue-900 text-center w-full text-1xl">
-                                        <Latex>{` $ ${props.numeroOrigen}_{{${props.sistemaOrigen}}} = $ `}</Latex>
-                                        <Latex>{`$${props.resultado}_{{${props.resultadoBase}}}$`}</Latex>
+                                        <Latex>{props.latex1}</Latex>
+                                        <Latex>{props.latex2}</Latex>
 
                                    </h3>
                               </div>

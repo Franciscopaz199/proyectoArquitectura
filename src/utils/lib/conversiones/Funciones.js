@@ -1,4 +1,4 @@
-export default class Numero{
+export default class Funciones{
      
      // en caso de que el sistema sea hexamal retorna el valor de las letras en el sistema decimal
      getValorLetra(valor) {

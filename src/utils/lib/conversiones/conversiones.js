@@ -4,7 +4,7 @@ import Funciones from "./Funciones";
 
 export default class Conversiones {
 
-     constructor(numero, sistemaOrigen, sistemaDestino) {
+     constructor(numero, sistemaOrigen, sistemaDestino ) {
           this.numero = numero;
           this.sistemaOrigen = sistemaOrigen;
           this.sistemaDestino = sistemaDestino;

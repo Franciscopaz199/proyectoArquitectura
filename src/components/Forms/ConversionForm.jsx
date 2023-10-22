@@ -63,6 +63,7 @@ export default function ConversionForm(props) {
      return (
           <>
                <FormContainer>
+
                     <div className="flex   flex-col sm:flex-row  space-y-4 sm:space-y-0 ">
                          <div className="w-full sm:w-1/2 flex flex-col">
                               <label htmlFor="sistemaOrigen">Sistema origen</label>
@@ -98,9 +99,7 @@ export default function ConversionForm(props) {
 
                     {
                          result != null ?
-                              <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)}
-                                   resultado={result} resultadoBase={sistemaDestino} numeroOrigen={value} sistemaOrigen={document.getElementById("sistemaOrigen").value}
-                                   scrollIntoView={scrollIntoView}
+                              <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)} scrollIntoView={scrollIntoView} latex1={`$${value}_{{${document.getElementById("sistemaOrigen").value}}} = $`} latex2={`$${result}_{{${sistemaDestino}}}$`}
                               >
                                    <p>{result}</p>
                               </MostrarResultado>
