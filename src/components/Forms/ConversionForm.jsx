@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "flowbite-react";
 import { useState } from "react";
 import { useEffect } from "react";
+import FormContainer from "./LayoutsForm/FormContainer";
 
 import Conversiones from "../../utils/lib/conversiones/conversiones";
 import MostrarResultado from "../Resultados/MostrarResultado";
@@ -41,7 +42,7 @@ export default function ConversionForm(props) {
           setResult(resultado);
      }
 
-    
+
 
      const validar = (e) => {
           const dominio = SYSTEMS.find(system => system.base == document.getElementById("sistemaOrigen").value).domain.toString();
@@ -51,7 +52,7 @@ export default function ConversionForm(props) {
                if (regex.test(valor)) {
                     setResult(null);
                     setValue(valor);
-                    
+
                } else {
                     e.target.value = valor.slice(0, valor.length - 1);
                }
@@ -61,7 +62,7 @@ export default function ConversionForm(props) {
 
      return (
           <>
-               <div className="flex flex-col overflow-hidden sm:px-10 sm:py-6 border  rounded-lg rounded-lg mt-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)] px-4 py-5 bg-white sm:p-6">
+               <FormContainer>
                     <div className="flex   flex-col sm:flex-row  space-y-4 sm:space-y-0 ">
                          <div className="w-full sm:w-1/2 flex flex-col">
                               <label htmlFor="sistemaOrigen">Sistema origen</label>
@@ -85,7 +86,7 @@ export default function ConversionForm(props) {
                     <div className="flex flex-col mt-4">
                          <label htmlFor="">Valor a convertir</label>
                          <input type="text" placeholder="Ingresa el valor a convertir" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm bg-gray-50 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" name="value" id="value"
-                             onKeyUp={(e) => validar(e)}/>
+                              onKeyUp={(e) => validar(e)} />
 
                     </div>
                     <div className="flex ">
@@ -93,19 +94,21 @@ export default function ConversionForm(props) {
                               Calcular
                          </Button>
                     </div>
-               </div>
 
-               {
-                    result != null ?
-                         <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)}
-                              resultado={result} resultadoBase={sistemaDestino} numeroOrigen={value} sistemaOrigen={document.getElementById("sistemaOrigen").value}
-                              scrollIntoView={scrollIntoView}
-                         >
-                              <p>{result}</p>
-                         </MostrarResultado>
-                         : " "
 
-               }
+                    {
+                         result != null ?
+                              <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)}
+                                   resultado={result} resultadoBase={sistemaDestino} numeroOrigen={value} sistemaOrigen={document.getElementById("sistemaOrigen").value}
+                                   scrollIntoView={scrollIntoView}
+                              >
+                                   <p>{result}</p>
+                              </MostrarResultado>
+                              : " "
+
+                    }
+
+               </FormContainer>
           </>
      );
 }
