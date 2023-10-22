@@ -5,7 +5,7 @@ import TItleIndex from "../../components/LayoutComponents/TItleIndex";
 
 function Layout(props) {
      return (
-          <div className=" h-screen " >
+          <div className=" min-h-screen dark:bg-gray-900 dark:text-white ">
                
                <Header title="ArquiMath" />
                {props.children}

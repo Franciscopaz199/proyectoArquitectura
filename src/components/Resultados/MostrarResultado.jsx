@@ -10,14 +10,15 @@ export default function MostrarResultado(props) {
       // El segundo argumento es un arreglo de dependencias vacío para que se ejecute solo una vez
      return (
           <>
-               <div class="border p-4 rounded-lg mt-3 " id="resultado">
+               <div class="border p-4 rounded-lg mt-3  dark:bg-gray-800 dark:border-gray-700" 
+               id="resultado">
                     <div class="flex items-start">
                          <div class="flex flex-grow items-start gap-3">
 
                               <div class="flex flex-col flex-grow w-full">
                                    <div class="font-medium text-color mb-1">{props.title}</div>
                                    <div class="text-sm text-color mb-4">{props.subtitle}</div>
-                                   <h3 className="sm:text-2xl font-bold text-blue-900 text-center w-full text-1xl">
+                                   <h3 className="sm:text-2xl font-bold text-blue-900 text-center w-full text-1xl dark:text-white">
                                         <Latex>{props.latex1}</Latex>
                                         <Latex>{props.latex2}</Latex>
 

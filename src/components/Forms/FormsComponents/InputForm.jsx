@@ -38,7 +38,7 @@ export default function InputForm(props) {
                               onChange={(e) => validar(e)}
                          />
                          <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
-                              <span class="text-gray-500">$</span>
+                              <span class="text-gray-500">#</span>
                          </div>
                          <div class="absolute inset-y-0 right-0 flex items-center text-gray-500 pr-px">
                               <label for={`sistemaOrigen${props.id}`} class="sr-only">Currency</label>

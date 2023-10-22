@@ -4,7 +4,7 @@ import { Footer } from 'flowbite-react';
 export default function FooterWithLogo() {
      return (
           <Footer container>
-               <div className="w-full text-center">
+               <div className="w-full text-center dark:text-white">
                     <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
 
                     </div>
