@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import Conversiones from "../../utils/lib/conversiones/conversiones";
 import MostrarResultado from "../Resultados/MostrarResultado";
 import SYSTEMS from "../../utils/vars/constants";
+
 // import Conversiones from "../../utils/lib/conversiones/conversiones";
 
 export default function ConversionForm(props) {
@@ -13,17 +14,23 @@ export default function ConversionForm(props) {
      // this is the value that will be used in the calculation
      const [value, setValue] = useState(0);
      const [result, setResult] = useState(null);
+     const [sistemaDestino, setSistemaDestino] = useState(0);
 
      // this is important because it will be called when the value changes
      useEffect(() => {
           console.log("value", value);
-     }, [value, result]);
+     }, [value, result, sistemaDestino]);
 
+
+     const scrollIntoView = () => {
+          const resultadoDiv = document.getElementById("resultado");
+          resultadoDiv.scrollIntoView({ behavior: "smooth" });
+     }
 
      const calculate = () => {
           const sistemaOrigen = document.getElementById("sistemaOrigen").value;
           const sistemaDestino = document.getElementById("sistemaDestino").value;
-
+          setSistemaDestino(sistemaDestino);
           if (sistemaOrigen == "default" || sistemaDestino == "default") {
                alert("Debe seleccionar un sistema origen y un sistema destino");
                return;
@@ -38,7 +45,6 @@ export default function ConversionForm(props) {
           const resultado = conversion.convertirSistema();
           setResult(resultado);
      }
-
 
     
 
@@ -81,20 +87,23 @@ export default function ConversionForm(props) {
                     </div>
                     <div className="flex flex-col mt-4">
                          <label htmlFor="">Valor a convertir</label>
-                         <input type="text" placeholder="Ingresa el valor a convertir" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm bg-gray-50 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" name="value" id="value" 
-                         onChange={(e) => validar(e)} required />
+                         <input type="text" placeholder="Ingresa el valor a convertir" className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm bg-gray-50 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" name="value" id="value"
+                              onChange={(e) => validar(e)} required />
 
                     </div>
-                   <div className="flex ">
-                   <Button  onClick={() => calculate()} className="w-1/3mx-auto mt-4">
-                         Calcular
-                    </Button>
-                   </div>
+                    <div className="flex ">
+                         <Button onClick={() => calculate()} className="w-1/3mx-auto mt-4">
+                              Calcular
+                         </Button>
+                    </div>
                </div>
 
                {
                     result != null ?
-                         <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)}>
+                         <MostrarResultado title="Resultado" subtitle="Resultado de la conversión" onClick={() => setResult(null)}
+                              resultado={result} resultadoBase={sistemaDestino} numeroOrigen={value} sistemaOrigen={document.getElementById("sistemaOrigen").value}
+                              scrollIntoView={scrollIntoView}
+                         >
                               <p>{result}</p>
                          </MostrarResultado>
                          : " "
